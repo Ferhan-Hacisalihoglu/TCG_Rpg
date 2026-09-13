@@ -2,6 +2,9 @@
 
 A Blueprint-only trading card game prototype built in Unreal Engine 5.8. Features a 5v5 card board, data-driven card definitions, AI opponents, and a multiplayer-ready lobby.
 
+<img width="1919" height="1079" alt="Screenshot 2026-09-13 114127" src="https://github.com/user-attachments/assets/a7d0eacc-7710-4ae7-93b0-ea36dc9d3030" />
+
+
 ## Features
 
 - **Card battler core** — player vs. enemy card spawns on a symmetric 5v5 board (`Lvl_Test`)
