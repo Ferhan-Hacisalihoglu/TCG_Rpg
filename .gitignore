@@ -1,0 +1,23 @@
+# Unreal Engine
+Saved/
+Intermediate/
+Binaries/
+DerivedDataCache/
+Build/
+.vs/
+.vscode/
+*.sln
+*.suo
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.opendb
+
+# Crash logs / dumps
+Saved/Crashes/
+*.dmp
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
