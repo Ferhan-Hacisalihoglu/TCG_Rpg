@@ -18,11 +18,6 @@ A Blueprint-only trading card game prototype built in Unreal Engine 5.8. Feature
 - Windows 64-bit (developed / tested on Windows)
 - No C++ toolchain required — **Blueprint-only** (no `Source/` folder)
 
-Enabled plugins (already in `.uproject`):
-
-- `ModelingToolsEditorMode`
-- `ModelContextProtocol` + `AllToolsets` (editor MCP access)
-
 ## Getting Started
 
 1. Clone the repo:
@@ -59,27 +54,7 @@ Content/
 - Card data lives in `DT_Card`; player stats in `DT_PlayerAttributes`.
 - New card effects: subclass `BP_BaseCardCustomRule` and add the rule action attribute (`E_RuleActionAttribute`).
 
-## Git Notes
+## Contributing
 
-Recommended `.gitignore` for UE projects — untracked generated folders:
-
-```gitignore
-Saved/
-Intermediate/
-Binaries/
-DerivedDataCache/
-```
-
-Commit `Content/`, `Config/`, `*.uproject` only.
-
-## Roadmap
-
-- [ ] Rename `Varaibles/` → `Variables/` (breaking: redirectors needed)
-- [ ] Real game map(s) beyond `Lvl_Test`
-- [ ] Lobby → game session flow wiring
-- [ ] Card balance pass via `DT_Card`
-
-## License
-
-No license specified yet — add one before public release.
+Pull requests welcome. Keep Blueprint diffs small and test in PIE before submitting.
 "# TCG_Rpg" 
