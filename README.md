@@ -1,0 +1,85 @@
+# TCG_Rpg — Trading Card Game (Unreal Engine 5.8)
+
+A Blueprint-only trading card game prototype built in Unreal Engine 5.8. Features a 5v5 card board, data-driven card definitions, AI opponents, and a multiplayer-ready lobby.
+
+## Features
+
+- **Card battler core** — player vs. enemy card spawns on a symmetric 5v5 board (`Lvl_Test`)
+- **Data-driven cards** — `DT_Card` / `DT_PlayerAttributes` DataTables + `ST_Card`, `ST_PlayerInfo`, `ST_TCGSettings` structs
+- **Custom card rules** — extensible `BP_BaseCardCustomRule` (e.g. `BP_CustomRule_Fireball`)
+- **AI opponent** — `BP_AI` + `BP_AIController_TCG`
+- **Full UMG UI** — main HUD, dice (`WBP_Dice`), notifications, enemy HUD, player vitality widgets, legacy + current card frames
+- **Lobby** — `GM_Lobby`, lobby player/controller, server-name widgets (`TCGLobby`)
+- **Dice & icon set** — 6 dice faces, 12+ ability icons (sword, shield, fireball, frost, arcane…)
+
+## Requirements
+
+- Unreal Engine **5.8**
+- Windows 64-bit (developed / tested on Windows)
+- No C++ toolchain required — **Blueprint-only** (no `Source/` folder)
+
+Enabled plugins (already in `.uproject`):
+
+- `ModelingToolsEditorMode`
+- `ModelContextProtocol` + `AllToolsets` (editor MCP access)
+
+## Getting Started
+
+1. Clone the repo:
+   ```bash
+   git clone <repo-url> TCG_Rpg
+   ```
+2. Open `TCG_Rpg.uproject` with Unreal Engine 5.8.
+3. Default startup map: `/Game/_Main/GameMode/TCGGame/Level/Lvl_Test`.
+4. Press **Play (PIE)** — default GameMode `GM_TcgGame`, GameInstance `GI_TCGGameInstance`.
+
+## Project Structure
+
+```text
+Content/
+  _Main/
+    GameMode/
+      GI_TCGGameInstance          # GameInstance
+      TCGGame/
+        Actor/                    # BP_Card, BP_CardInstance, BP_CardSpawn*, BP_AI, BP_AIController_TCG
+        Actor/CardCustomRules/    # BP_BaseCardCustomRule, BP_CustomRule_Fireball
+        GameMode/                 # GM_TcgGame, GS_TCGGame_State, PC_TCG, BP_BaseTcgPawn, BPC_TCG_Component, BPI_TCG_Controller
+        Level/                    # Lvl_Test
+        Materials/ Mesh/ Texture/ # card art, dice, icons, UI
+        Varaibles/                # E_* enums, DT_* tables, ST_* structs
+        Widget/                   # WBP_MainTcg, WBP_Dice, WBP_Card, Enemy, PlayerVitality
+      TCGLobby/
+        TCGLobby (level), GM_Lobby, PC_TCGLobby, PlayerLobby
+        Widgets/                  # WBP_MainLobby, WBP_ServerName
+```
+
+## Gameplay Notes
+
+- `Lvl_Test` outliner: `CardLocations/` (5x `BP_PlayerCardSpawn` + 5x `BP_EnemyCardSpawn`), `Lighting/` (directional, sky, fog, clouds).
+- Card data lives in `DT_Card`; player stats in `DT_PlayerAttributes`.
+- New card effects: subclass `BP_BaseCardCustomRule` and add the rule action attribute (`E_RuleActionAttribute`).
+
+## Git Notes
+
+Recommended `.gitignore` for UE projects — untracked generated folders:
+
+```gitignore
+Saved/
+Intermediate/
+Binaries/
+DerivedDataCache/
+```
+
+Commit `Content/`, `Config/`, `*.uproject` only.
+
+## Roadmap
+
+- [ ] Rename `Varaibles/` → `Variables/` (breaking: redirectors needed)
+- [ ] Real game map(s) beyond `Lvl_Test`
+- [ ] Lobby → game session flow wiring
+- [ ] Card balance pass via `DT_Card`
+
+## License
+
+No license specified yet — add one before public release.
+"# TCG_Rpg" 
